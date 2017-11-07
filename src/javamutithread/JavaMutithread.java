@@ -116,7 +116,6 @@ public class JavaMutithread {
         
         (new RunnerA()).start();
         (new Thread(new RunnerB())).start();
-        System.out.println("");
     }
     
 }
