@@ -1,10 +1,7 @@
 package javamutithread;
 
-import java.io.IOException;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 
 class Runner extends Thread{
@@ -40,23 +37,12 @@ class Runner2 implements Runnable{
 
 class RunnerA extends Thread{
     
-    static final Logger logger = Logger.getLogger("thread");
-    FileHandler fh;
+    LogClass logClass=new LogClass("Hello from Thread A");
     
     @Override
     public void run(){
         for (int i = 0; i < 10; i++) {
-            try{
-                fh=new FileHandler("C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\JavaMutithread\\src\\log\\thread.log");
-                logger.addHandler(fh);
-                SimpleFormatter formatter = new SimpleFormatter();
-                fh.setFormatter(formatter);
-                logger.setUseParentHandlers(false);
-                logger.info("Hello from Thread A");
-                
-            } catch (IOException | SecurityException ex) {
-                Logger.getLogger(RunnerA.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           logClass.register();
         }
         
         try {
@@ -68,24 +54,13 @@ class RunnerA extends Thread{
 }
 
 class RunnerB implements Runnable{
-
-    static final Logger logger = Logger.getLogger("thread");
-    FileHandler fh;
+    
+    LogClass logClass=new LogClass("Hello from Thread B");
     
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            try{
-                fh=new FileHandler("C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\JavaMutithread\\src\\log\\thread.log");
-                logger.addHandler(fh);
-                SimpleFormatter formatter = new SimpleFormatter();
-                fh.setFormatter(formatter);
-                logger.setUseParentHandlers(false);
-                logger.info("Hello from Thread B");
-                
-            } catch (IOException | SecurityException ex) {
-                Logger.getLogger(RunnerA.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            logClass.register();
         }
         
         try {
