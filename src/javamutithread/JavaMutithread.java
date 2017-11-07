@@ -77,6 +77,10 @@ public class JavaMutithread {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        SyncThreads st=new SyncThreads();
+        
+        System.out.println(st.doCount());
         Runner runner = new Runner();
         Runner runner1 = new Runner();
                 
